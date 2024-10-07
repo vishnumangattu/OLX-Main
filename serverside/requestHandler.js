@@ -1,5 +1,6 @@
-import userSchema from './models/user.model.js'
-import bcrypt from 'bcrypt'
+import userSchema from './models/user.model.js';
+import productSchema from "./models/product.model.js";
+import bcrypt from 'bcrypt';
 import pkg from "jsonwebtoken";
 
 const {sign}=pkg;
@@ -12,8 +13,8 @@ export async function getProducts(req,res) {
         console.log(user);
         if(!user) 
             return res.status(403).send({msg:"Unauthorized access"})
-        const employees=await userSchema.find();
-        res.status(200).send({employees,username:user.username})
+        const products=await productSchema.find();
+        res.status(200).send({products,profile:user.profile,id:_id})
         
     } catch (error) {
         res.status(404).send({msg:error})
@@ -22,7 +23,8 @@ export async function getProducts(req,res) {
 
 export async function signUp(req,res) {
     try{
-        const {email,username,password,cpassword } = req.body;
+
+        const {email,username,password,cpassword,place,profile,address,phone,pincode} = req.body;
         console.log(email,username,password,cpassword);
         if(!(email&& username&& password&& cpassword))
             return res.status(404).send({msg:"fields are empty"})
@@ -33,7 +35,7 @@ export async function signUp(req,res) {
         .then((hashedPassword)=>{
             console.log(hashedPassword);
             userSchema
-            .create({email,username,password:hashedPassword})
+            .create({email,username,password:hashedPassword,place,profile,address,phone,pincode})
             .then(()=>{
                 console.log("success");
                 return res.status(201).send({msg:"successs"})
