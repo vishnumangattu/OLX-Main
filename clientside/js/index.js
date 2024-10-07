@@ -7,8 +7,10 @@ async function getProducts() {
     console.log(result);
         
     if(res.status==200){
-        if(result.profile)
+        if(result.profile){
             document.getElementById("profileImage").src=result.profile;
+            document.getElementById("prof").src=result.profile;
+        }
         document.getElementById("next").innerHTML=`<a href="./pages/profile.html?id=${result.id}"><button>View or Edit Profile</button></a>`;
         str=``;
         result.products.map((product)=>{
@@ -29,6 +31,12 @@ async function getProducts() {
     }
 }
 getProducts();
+
+function logout() {
+    localStorage.removeItem("Auth");
+    window.location.href="../pages/signin.html"
+}
+
 const profileImage = document.getElementById('profileImage');
 const dropdownMenu = document.getElementById('dropdownMenu');
 

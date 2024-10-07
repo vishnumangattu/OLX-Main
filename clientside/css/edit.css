@@ -59,11 +59,8 @@ button {
 button:hover {
     background-color: #45a049; /* Darker Green */
 }
-
-
-#pro img{
+.pro img{
     height: 100px;
     width: 100px;
     object-fit: cover;
 }
-

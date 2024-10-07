@@ -8,5 +8,6 @@ router.route("/getproducts").get(Auth,prod.getProducts);
 router.route("/signup").post(prod.signUp);
 router.route("/signin").post(prod.signIn);
 router.route("/getuser/:id").get(prod.getUser)
+router.route("/edituser/:_id").put(prod.editUser)
 
 export default router;
