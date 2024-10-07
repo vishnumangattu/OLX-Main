@@ -21,6 +21,16 @@ export async function getProducts(req,res) {
     }
 }
 
+export async function getUser(req,res) {
+    try {
+        const {id}=req.params;
+        const data=await userSchema.findOne({_id:id});
+        res.status(200).send(data);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+}
+
 export async function signUp(req,res) {
     try{
 
