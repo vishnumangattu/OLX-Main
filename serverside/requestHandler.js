@@ -85,7 +85,37 @@ export async function editUser(req,res) {
     const data=await userSchema.updateOne({_id},{$set:{...user}});
     res.status(201).send(data);
     } catch (error) {
-        res.status(404).send(error)
+        res.status(404).send(error);
     }
     
+}
+
+export async function addProduct(req,res) {
+    try {
+        const {pname,price,category,description,sellerId,place,images,address,phone,pincode} = req.body;
+        if(!(pname&&price&&category&&description&&sellerId&&place&&images&&address&&phone&&pincode))
+            return res.status(404).send({msg:"fields are empty"})
+        productSchema
+            .create({pname,price,category,description,sellerId,place,images,address,phone,pincode})
+            .then(()=>{
+                console.log("success");
+                return res.status(201).send({msg:"successs"})
+            })
+            .catch((error)=>{
+                console.log("faliure");
+                return res.status(404).send({msg:"product not added"})
+            })
+    } catch (error) {
+        res.status(404).send(error);
+    }
+}
+
+export async function getSProducts(req,res) {
+    try {
+        const {id}=req.params;
+        const products=await productSchema.find({sellerId:id});
+        res.status(200).send(products);
+    } catch (error) {
+        res.status(404).send(error)
+    }
 }

@@ -31,7 +31,7 @@ label {
 }
 
 input,
-textarea {
+textarea ,select{
     width: 100%;
     padding: 10px;
     border: 1px solid #d1e7dd; /* Light Green Border */

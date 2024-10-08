@@ -19,6 +19,10 @@
     font-weight: bolder;
     border: 5px solid orange;
 }
+.navbar a{
+    text-decoration: none;
+    color: black;
+}
 .container {
     position: relative;
     display: inline-block;

@@ -12,6 +12,7 @@ async function getProducts() {
             document.getElementById("prof").src=result.profile;
         }
         document.getElementById("next").innerHTML=`<a href="./pages/profile.html?id=${result.id}"><button>View or Edit Profile</button></a>`;
+        document.getElementById("sell").innerHTML=`<a href="./pages/addp.html?id=${result.id}"">+SELL</a>`
         str=``;
         result.products.map((product)=>{
             str=`
