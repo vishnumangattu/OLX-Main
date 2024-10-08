@@ -65,5 +65,6 @@ button:hover {
     height: 100px;
     width: 100px;
     object-fit: cover;
+    margin-right: 1%;
 }
 

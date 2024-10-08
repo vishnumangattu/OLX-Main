@@ -20,11 +20,16 @@ async function getSProducts() {
     const res=await fetch(`http://localhost:3000/api/getsproducts/${id}`);
     const products=await res.json();
     str=``;
-    products.products.map((product)=>{
+    console.log(products);
+    products.map((product)=>{
         str+=`
             <div class="product">
+                <a href="./pages/product.html">
                     <img src="${product.images[0]}" alt="">
-                    <h2>${product.pname}</h2>
+                    <h3>${product.pname}</h3>
+                    <h1 >Rs. ${product.price}</h1>
+                    <p>${product.description}</p>
+                </a>
             </div>
         `
     })

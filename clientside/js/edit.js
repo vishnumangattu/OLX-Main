@@ -8,6 +8,7 @@ async function getUser() {
     const user=await res.json();
     profile=user.profile;
     password=user.password;
+    console.log(user.address);
     document.getElementById("frm").innerHTML=`
     <div class="form-group">
                 <label for="email">Email:</label>
@@ -23,7 +24,7 @@ async function getUser() {
             </div>
             <div class="form-group">
                 <label for="address">Address:</label>
-                <textarea id="address" name="address" value="${user.address}"></textarea>
+                <textarea id="address" name="address" value="${user.address}">${user.address}</textarea>
             </div>
             <div class="form-group">
                 <label for="phone">Phone:</label>

@@ -14,12 +14,15 @@ async function getProducts() {
         document.getElementById("next").innerHTML=`<a href="./pages/profile.html?id=${result.id}"><button>View or Edit Profile</button></a>`;
         document.getElementById("sell").innerHTML=`<a href="./pages/addp.html?id=${result.id}"">+SELL</a>`
         str=``;
+        console.log(result.products);
         result.products.map((product)=>{
             str=`
             <div class="product">
-                <a href="">
-                    <img src="${product.pname}" alt="">
-                    <h2>Name</h2>
+                <a href="./pages/product.htmlid=${product._id}">
+                    <img src="${product.images[0]}" alt="">
+                    <h3>${product.pname}</h3>
+                    <h1 >Rs. ${product.price}</h1>
+                    <p>${product.description}</p>
                 </a>
             </div>
             `

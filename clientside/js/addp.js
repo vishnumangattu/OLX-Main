@@ -39,14 +39,15 @@ document.getElementById("addp").addEventListener("submit",async(e)=>{
     });
 })
 document.getElementById("images").addEventListener('change',(e)=>{
-    // document.getElementById("images").files.map(async(i)=>{
-    //     console.log(i);
-    //     images.push(await convertTBase64(i));
-    //     const data=document.createElement("img");
-    //     data.src=await convertTBase64(i);
-    //     document.getElementById("pro").appendChild(data);
-    // })
-    console.log(document.getElementById("images").files);
+    const arr=Object.values(document.getElementById("images").files)
+    console.log(arr);
+    arr.map(async(i)=>{
+        console.log(i);
+        images.push(await convertTBase64(i));
+        const data=document.createElement("img");
+        data.src=await convertTBase64(i);
+        document.getElementById("pro").appendChild(data);
+    })
     
     // document.getElementById("pro").innerHTML=`<img src="${images}" alt="" >`
 })
