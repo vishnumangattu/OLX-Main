@@ -1,52 +1,72 @@
 const value = localStorage.getItem("Auth");
+let profileImage;
+let dropdownMenu;
 async function getProducts() {
 
     const res=await fetch("http://localhost:3000/api/getproducts",{headers:{
     "Authorization" : `Bearer ${value}`}})
     const result=await res.json();
     console.log(result);
-        
+    str=``;
+    result.products.map((product)=>{
+        str+=`
+        <div class="product">
+            <a href="./pages/product.htmlid=${product._id}">
+                <img src="${product.images[0]}" alt="">
+                <h3>${product.pname}</h3>
+                <h1 >Rs. ${product.price}</h1>
+            </a>
+        </div>
+        `
+    })
+    document.getElementById("products").innerHTML=str;
     if(res.status==200){
-        if(result.profile){
-            document.getElementById("profileImage").src=result.profile;
-            document.getElementById("prof").src=result.profile;
-        }
-        document.getElementById("next").innerHTML=`<a href="./pages/profile.html?id=${result.id}"><button>View or Edit Profile</button></a>`;
-        document.getElementById("sell").innerHTML=`<a href="./pages/addp.html?id=${result.id}"">+SELL</a>`
-        str=``;
-        console.log(result.products);
-        result.products.map((product)=>{
-            str=`
-            <div class="product">
-                <a href="./pages/product.htmlid=${product._id}">
-                    <img src="${product.images[0]}" alt="">
-                    <h3>${product.pname}</h3>
-                    <h1 >Rs. ${product.price}</h1>
-                    <p>${product.description}</p>
-                </a>
+        document.getElementById("navbar").innerHTML=`
+        <img src="./images/OLX-Symbol.png" alt="olx">
+        <div class="search">
+            <input type="text" name="" id="filter" placeholder="Find cars,mobile Phones and more...">
+            <img src="./images/search_2.png" alt="">
+        </div>
+        <div  class="container">
+            <img src="${result.profile}" alt="" id="profileImage" class="profile-image" onclick="popup()">
+            <div class="dropdown" id="dropdownMenu">
+                <img src="${result.profile}" alt="">
+                <div class="dropdown-option" ><a href="./pages/profile.html?id=${result.id}"><button>View or Edit Profile</button></a></div>
+                <div class="dropdown-option"><button onclick="logout()">Logout</button></div>
             </div>
-            `
-        })
-        document.getElementById("products").innerHTML=str;
+        </div>
+        <button ><a href="./pages/addp.html?id=${result.id}"">+ SELL</a></button>
+        `
+        profileImage= document.getElementById('profileImage');
+        console.log(profileImage);
+        dropdownMenu = document.getElementById('dropdownMenu');
+        
+    }
+    else if(res.status==403){
+        profileImage= document.getElementById('profileImage');
+        console.log(profileImage);
+        
+        dropdownMenu = document.getElementById('dropdownMenu');
+        alert(result.msg);
     }
     else{
         alert(result.msg);
-        window.location.href="../pages/signin.html"
+        
     }
 }
 getProducts();
 
 function logout() {
+    console.log("hai");
+    
     localStorage.removeItem("Auth");
-    window.location.href="../pages/signin.html"
+    window.location.href="./index.html"
 }
 
-const profileImage = document.getElementById('profileImage');
-const dropdownMenu = document.getElementById('dropdownMenu');
 
-profileImage.addEventListener('click', () => {
+function popup() {
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-});
+}
 
 // Close dropdown if clicked outside
 window.addEventListener('click', (event) => {

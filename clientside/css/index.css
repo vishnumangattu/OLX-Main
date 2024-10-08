@@ -114,19 +114,19 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 1%;
 }
 .product{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     padding: 1%;
     margin: 1% 2%;
-    line-height: 3vh;
+    line-height: 4vh;
 }
 .product img{
     display: block;
     height: 150px;
     width: 200px;
     object-fit: cover;
+    text-align: center;
 }
 .product a{
     text-decoration: none;

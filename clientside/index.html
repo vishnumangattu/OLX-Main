@@ -7,21 +7,21 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
-    <div class="navbar">
+    <div class="navbar" id="navbar">
         <img src="./images/OLX-Symbol.png" alt="olx">
         <div class="search">
             <input type="text" name="" id="filter" placeholder="Find cars,mobile Phones and more...">
             <img src="./images/search_2.png" alt="">
         </div>
         <div  class="container">
-            <img src="./images/person_16dp_000000_FILL0_wght400_GRAD0_opsz20.png" alt="" id="profileImage" class="profile-image">
+            <img src="./images/person_16dp_000000_FILL0_wght400_GRAD0_opsz20.png" alt="" id="profileImage" onclick="popup()" class="profile-image">
             <div class="dropdown" id="dropdownMenu">
-                <img src="./images/person_16dp_000000_FILL0_wght400_GRAD0_opsz20.png" alt="" id="prof">
-                <div class="dropdown-option" id="next"></div>
-                <div class="dropdown-option"><button onclick="logout()">Logout</button></div>
+                <img src="./images/person_16dp_000000_FILL0_wght400_GRAD0_opsz20.png" alt="" >
+                
+                <div class="dropdown-option"><button ><a href="./pages/signin.html">Login</a></button></div>
             </div>
         </div>
-        <button id="sell"></button>
+        <button><a href="./pages/signin.html">Login</a></button>
     </div>
 
     <div id="products">
