@@ -32,7 +32,7 @@ async function getProducts() {
             <div class="dropdown" id="dropdownMenu">
                 <img src="${result.profile}" alt="">
                 <div class="dropdown-option" ><a href="./pages/profile.html?id=${result.id}"><button>View or Edit Profile</button></a></div>
-                <div class="dropdown-option"><button onclick="logout()">Logout</button></div>
+                <div class="dropdown-option"><button onclick="logout()" id="hover">Logout</button></div>
             </div>
         </div>
         <button ><a href="./pages/addp.html?id=${result.id}"">+ SELL</a></button>
@@ -74,3 +74,27 @@ window.addEventListener('click', (event) => {
         dropdownMenu.style.display = 'none';
     }
 });
+
+document.getElementById("filter").addEventListener('keyup',async(e)=>{
+    try {
+        const res=await fetch(`http://localhost:3000/api/getproducts`);
+        const products=await res.json();
+        str=``;
+        products.filter((i)=>i.pname.toLowerCase().includes(e.target.value.toLowerCase())).map((product)=>{
+            str+=`
+            <div class="product">
+                <a href="./pages/product.html">
+                    <img src="${product.images[0]}" alt="">
+                    <h3>${product.pname}</h3>
+                    <h1 >Rs. ${product.price}</h1>
+                    <p>${product.description}</p>
+                </a>
+            </div>
+        `
+        })
+
+        document.getElementById("products").innerHTML=str;
+    } catch (error) {
+        console.log(error);
+    }
+})

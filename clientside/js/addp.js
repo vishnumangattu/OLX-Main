@@ -4,21 +4,15 @@ const id=urlParams.get("id");
 let images=[];
 document.getElementById("addp").addEventListener("submit",async(e)=>{
     e.preventDefault();
-    const res=await fetch(`http://localhost:3000/api/getuser/${id}`);
-    const user=await res.json();
     const pname=document.getElementById("pname").value;
     const price=parseInt(document.getElementById("price").value);
     const category=document.getElementById("category").value;
     const description=document.getElementById("description").value;
-    const sellerId=user._id;
-    const place=user.place;
-    const address=user.address;
-    const phone=user.phone;
-    const pincode=user.pincode;
+    const sellerId=id;
     fetch("http://localhost:3000/api/addproduct",{
         method:"POST",
         headers:{"Content-Type":"application/json"},
-        body:JSON.stringify({pname,price,category,description,sellerId,place,images,address,phone,pincode})
+        body:JSON.stringify({pname,price,category,description,sellerId,images})
     }).then((res)=>{
         console.log(res);
         if(res.status==201){
@@ -40,7 +34,7 @@ document.getElementById("addp").addEventListener("submit",async(e)=>{
 })
 document.getElementById("images").addEventListener('change',(e)=>{
     const arr=Object.values(document.getElementById("images").files)
-    console.log(arr);
+    document.getElementById("pro").textContent="";
     arr.map(async(i)=>{
         console.log(i);
         images.push(await convertTBase64(i));

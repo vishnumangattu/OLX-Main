@@ -5,10 +5,6 @@ const productSchema = new mongoose.Schema({
     category:{type:String},
     description:{type:String},
     sellerId:{type:String},
-    images:{type:Array},
-    place:{type:String},
-    address:{type:String},
-    pincode:{type:Number},
-    phone:{type:Number}
+    images:{type:Array}
 })
 export default mongoose.model.Products||mongoose.model("Product",productSchema)

@@ -137,3 +137,6 @@
 .product h1{
     color: rgb(2, 71, 2);
 }
+#hover:hover{
+    cursor: pointer;
+}

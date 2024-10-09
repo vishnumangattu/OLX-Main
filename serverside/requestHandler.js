@@ -95,11 +95,11 @@ export async function editUser(req,res) {
 
 export async function addProduct(req,res) {
     try {
-        const {pname,price,category,description,sellerId,place,images,address,phone,pincode} = req.body;
-        if(!(pname&&price&&category&&description&&sellerId&&place&&images&&address&&phone&&pincode))
+        const {pname,price,category,description,sellerId,images} = req.body;
+        if(!(pname&&price&&category&&description&&sellerId&&images))
             return res.status(404).send({msg:"fields are empty"})
         productSchema
-            .create({pname,price,category,description,sellerId,place,images,address,phone,pincode})
+            .create({pname,price,category,description,sellerId,images})
             .then(()=>{
                 console.log("success");
                 return res.status(201).send({msg:"successs"})
