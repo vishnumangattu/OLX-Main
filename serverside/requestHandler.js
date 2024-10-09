@@ -12,14 +12,12 @@ export async function getProducts(req,res) {
 
             const _id = req.user.userId;
             console.log(_id);
-            
             const user = await userSchema.findOne({_id});
-            console.log(user);
             return res.status(200).send({products,profile:user.profile,id:_id})
         }else{
 
             console.log("hai");
-            return res.status(403).send({products,msg:"Login for user experience"})
+            return res.status(403).send({products,msg:"Login for better user experience"})
         }
         
         
@@ -68,7 +66,6 @@ export async function signUp(req,res) {
 }
 
 export async function signIn(req,res) {
-    console.log(req.body);
     const{email,password}=req.body;
     if(!(email&& password))
         return res.status(404).send({msg:"fields are empty"});
