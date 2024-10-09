@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .content {
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+            height: 60vh;
+            width: 100%;
+        }
+        .product-images {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-right: 20px;
+            width: 50%;
+            height: 100%;
+        }
+        .product-images img {
+            width: 100%;
+            height: 70%;
+            width: 300px; /* Adjust size as needed */
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .prodimg{
+            width: 100%;
+            height: 30%;
+        }
+        .prodimg img{
+            height: 100px;
+            width: 100px;
+        }
+        .details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .detail-item {
+            margin: 10px 0;
+        }
+        .detail-item label {
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #eaeaea;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Product Name</h1>
+            <h2>$99.99</h2>
+            <h3>Category: Electronics</h3>
+        </div>
+        <div class="content">
+            <div class="product-images">
+                <img src="../images/cat3.webp" alt="Product Image 1">
+                <div class="prodimg">
+                    <img src="../images/cat3.webp" alt="Product Image 2">
+                    <img src="../images/cat3.webp" alt="Product Image 3">
+                </div>
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <label>Description:</label>
+                    <p>This is a great product that you will love!</p>
+                </div>
+                <div class="detail-item">
+                    <label>Seller ID:</label>
+                    <p>Seller123</p>
+                </div>
+                <div class="detail-item">
+                    <label>Place:</label>
+                    <p>New York</p>
+                </div>
+                <div class="detail-item">
+                    <label>Address:</label>
+                    <p>123 Main St, New York, NY</p>
+                </div>
+                <div class="detail-item">
+                    <label>Phone:</label>
+                    <p>(123) 456-7890</p>
+                </div>
+                <div class="detail-item">
+                    <label>Pincode:</label>
+                    <p>10001</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Product Selling Website</p>
+        </div>
+    </div>
+</body>
+</html>

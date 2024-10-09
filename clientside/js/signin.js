@@ -12,7 +12,7 @@ document.getElementById("signin").addEventListener("submit",async(e)=>{
             const result= await res.json();
             console.log(result);
             localStorage.setItem("Auth",result.token)
-            alert("success")
+            alert(result.msg)
             console.log(res);        
             window.location.href="../index.html"
         }

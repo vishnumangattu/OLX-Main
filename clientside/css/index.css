@@ -108,7 +108,9 @@
     width: 40px;
     object-fit: cover;
 }
-
+.dropdown-option a{
+    color: white;
+}
 #products{
     width: 100%;
     display: flex;

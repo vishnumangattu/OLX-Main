@@ -40,3 +40,50 @@ function logout() {
     localStorage.removeItem("Auth");
     window.location.href="../pages/signin.html"
 }
+
+document.getElementById("search").addEventListener('keyup',async(e)=>{
+    try {
+        const res=await fetch(`http://localhost:3000/api/getsproducts/${id}`);
+        const products=await res.json();
+        str=``;
+        products.filter((i)=>i.pname.toLowerCase().includes(e.target.value.toLowerCase())).map((product)=>{
+            str+=`
+            <div class="product">
+                <a href="./pages/product.html">
+                    <img src="${product.images[0]}" alt="">
+                    <h3>${product.pname}</h3>
+                    <h1 >Rs. ${product.price}</h1>
+                    <p>${product.description}</p>
+                </a>
+            </div>
+        `
+        })
+
+        document.getElementById("products").innerHTML=str;
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+document.getElementById("filter").addEventListener('change',async(e)=>{
+    try {
+        const res=await fetch(`http://localhost:3000/api/getsproducts/${id}`);
+        const products=await res.json();
+        str=``;
+        products.filter((i)=>i.category.toLowerCase().includes(e.target.value.toLowerCase())).map((product)=>{
+            str+=`
+            <div class="product">
+                <a href="./pages/product.html">
+                    <img src="${product.images[0]}" alt="">
+                    <h3>${product.pname}</h3>
+                    <h1 >Rs. ${product.price}</h1>
+                    <p>${product.description}</p>
+                </a>
+            </div>
+        `
+        })
+        document.getElementById("products").innerHTML=str;
+    } catch (error) {
+        console.log(error);
+    }
+})
