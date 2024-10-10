@@ -95,11 +95,13 @@ export async function editUser(req,res) {
 
 export async function addProduct(req,res) {
     try {
-        const {pname,price,category,description,sellerId,images} = req.body;
-        if(!(pname&&price&&category&&description&&sellerId&&images))
+        const {pname,price,category,description,sellerId,images,place,address,phone,pincode,sellerName} = req.body;
+        if(!(pname&&price&&category&&description&&sellerId&&images&&place&&address&&phone&&pincode&&sellerName))
             return res.status(404).send({msg:"fields are empty"})
+        console.log("hai");
+        
         productSchema
-            .create({pname,price,category,description,sellerId,images})
+            .create({pname,price,category,description,sellerId,images,place,address,phone,pincode,sellerName})
             .then(()=>{
                 console.log("success");
                 return res.status(201).send({msg:"successs"})
@@ -118,6 +120,17 @@ export async function getSProducts(req,res) {
         const {id}=req.params;
         const products=await productSchema.find({sellerId:id});
         res.status(200).send(products);
+    } catch (error) {
+        res.status(404).send(error)
+    }
+}
+
+export async function getProduct(req,res) {
+    try {
+        const {_id}=req.params;
+        const product=await productSchema.findOne({_id});
+        console.log(product.category);
+        res.status(200).send(product);
     } catch (error) {
         res.status(404).send(error)
     }

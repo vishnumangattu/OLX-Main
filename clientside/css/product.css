@@ -1,0 +1,174 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #eaeaea; /* Light text color */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 12px;
+    background: #c6edbf; /* Dark green container */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow: auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px 0;
+}
+
+.header h1 {
+    color: #472708; /* Soft light green for the title */
+    font-size: 2em; /* Adjusted font size */
+    margin: 5px 0;
+}
+
+.header h3, .header h2 {
+    color: #193f0a; /* Light text color */
+    margin: 2px 0;
+}
+.header h3{
+    text-align: left;
+}
+.content {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    height: auto; /* Allow the content to grow based on its content */
+}
+
+.product-images {
+    flex: 0 0 55%; /* Set to 60% width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px; /* Maintain spacing from details section */
+}
+
+.product-images .main-image {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Increased max height */
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 2px solid #3a4b39; /* Light green border */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition:  0.5s;
+
+}
+.main-image img{
+    object-fit: cover;
+    object-position: center;
+}
+.prodimg {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+}
+
+.prodimg img {
+    height: 70px;
+    width: 70px; 
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid #4a4a4a;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    object-fit: cover;
+    object-position: center;
+}
+
+.prodimg img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.buy-now {
+    background-color: #587d15; /* Light green background */
+    color: #f4f0f0; /* Dark text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 15px; /* Space above the button */
+    transition: background-color 0.3s, transform 0.3s;
+    width: 100%;
+}
+
+.buy-now:hover {
+    background-color: #947c11; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+.button-group {
+    width: 80%;
+    display: flex;
+    justify-content: space-between; /* Space buttons evenly */
+    margin-top: 15px; /* Space above the button group */
+}
+
+.edit-product, .delete-product {
+    width: 45%;
+    background-color: #739fc9; /* Light green background */
+    color: #1c1c1c; /* Dark text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.edit-product:hover {
+    background-color: #2b31a2; 
+    transform: scale(1.05); 
+}
+
+.delete-product {
+    background-color: #e57373; /* Light red background for delete */
+}
+
+.delete-product:hover {
+    background-color: #c62828; /* Darker red on hover */
+}        
+
+.details {
+    flex: 0 0 43%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ensure items are aligned at the top */
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.seller-info, .location-info, .specifications,.description {
+    background-color: #3a4b39; /* Slightly lighter dark green */
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.details h3{
+    margin: 0 0 10px;
+    color: #c6d6a8; /* Soft light green for headings */
+}
+
+.seller-info p, .location-info p, .specifications p {
+    margin: 5px 0;
+    color: #eaeaea; /* Light text color */
+}
+
+.specifications label {
+    font-weight: bold;
+    color: #eaeaea; /* Light text color */
+}

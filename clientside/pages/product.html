@@ -4,142 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-y: auto;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            width: 100%;
-            padding: 20px;
-            box-sizing: border-box;
-            background-color: #f9f9f9;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .content {
-            display: flex;
-            flex: 1;
-            justify-content: space-between;
-            height: 60vh;
-            width: 100%;
-        }
-        .product-images {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin-right: 20px;
-            width: 45%;
-            height: 100%;
-        }
-        .product-images img {
-            width: 100%;
-            height: 60%;
-            margin: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            object-fit: cover;
-            object-position: center;
-        }
-        .prodimg{
-            width: 100%;
-            height: 40%;
-        }
-        .prodimg img{
-            height: 100px;
-            width: 100px;
-        }
-        .details {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            
-            width: 60%;
-        }
-        .sell1{
-            width: 40%;
-            max-width: 80%;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-            padding: 2%;
-            margin-bottom: 2%;
-        }
-        .detail-item {
-            width: 100%;
-            border-radius: 4px;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-        .detail-item img{
-            display: block;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 1%;
-        }
-        .detail-item label {
-            font-weight: bold;
-        }
-        .footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #eaeaea;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/product.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            
-            
-            <h3>Category: Electronics</h3>
+            <h3>Category: <span id="category"></span></h3>
+            <h1 id="pname"></h1>
+            <h2>Price: <span id="price"></span></h2>
         </div>
         <div class="content">
             <div class="product-images">
-                <img src="../images/cat5.jpg" alt="Product Image 1">
-                <div class="prodimg">
-                    <img src="../images/cat5.jpg" alt="Product Image 2">
-                    <img src="../images/cat5.jpg" alt="Product Image 3">
-                    <h1>Product Name: </h1>
-                    <h2>Price: ₹99.99</h2>
-                    <p>Description:
-                    This is a great product that you will love!</p>
+                <img src="../images/cat5.jpg" id="image" alt="Main Product Image" class="main-image">
+                <div class="prodimg" id="prodimg">
                 </div>
-            </div>
-            <div class="details">
-                <div class="sell1">
-                    <div class="detail-item">
-                        <img src="../images/dog1.jpeg" alt="">
-                        <h2>name</h2>
+                
+                
+                    <div class="button-group" id="check"> 
+                        <button class="buy-now" >Buy Now</button> 
+                        <!-- <button class="edit-product">Edit Product</button>
+                        <button class="delete-product">Delete Product</button> -->
                     </div>
-                    <p>
-                        <label>Phone:</label>
-                        (123) 456-7890
-                    </p>
+            </div>
+            
+            <div class="details">
+                <div class="description">
+                    <h3 >Description</h3>
+                    <p><label>What seller says:</label> <span id="description"></span></p>
                 </div>
-                <div class="sell1">
-                        <p> <label>Place:</label>
-                        New York</p>
-                        <p><label>Address:</label>
-                        123 Main St, New York, NY</p>
-                        <p><label>Pincode:</label>
-                        10001</p>
+                <div class="seller-info">
+                    <h3>Seller Information</h3>
+                    <div class="detail-item">
+                        <div>
+                            <h4>Name: <span id="sellerName"></span></h4>
+                            <p><label>Phone:</label> <span id="phone"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-info">
+                    <h3>Location</h3>
+                    <p><label>Place:</label> <span id="place"></span></p>
+                    <p><label>Address:</label> <span id="address"></span></p>
+                    <p><label>Pincode:</label> <span id="pincode"></span>10001</p>
+                </div>
+                <div class="specifications">
+                    <h3>Product Specifications</h3>
+                    <p><label>Delivery Options:</label> Standard, Express</p>
+                    <p><label>Payment Options:</label> Cash, Credit/Debit Card</p>
+                    <p><label>Return Policy:</label> No return.</p>
                 </div>
             </div>
-        </div>
-        <div class="footer">
-            <p>&copy; 2024 Product Selling Website</p>
         </div>
     </div>
+    <script src="../js/product.js"></script>
 </body>
 </html>

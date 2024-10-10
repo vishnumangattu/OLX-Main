@@ -10,6 +10,7 @@ router.route("/signin").post(prod.signIn);
 router.route("/getuser/:id").get(prod.getUser)
 router.route("/edituser/:_id").put(prod.editUser)
 router.route("/addproduct").post(prod.addProduct);
-router.route("/getsproducts/:id").get(prod.getSProducts)
+router.route("/getsproducts/:id").get(prod.getSProducts);
+router.route("/getproduct/:_id").get(prod.getProduct);
 
 export default router;
