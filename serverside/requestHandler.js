@@ -11,16 +11,21 @@ export async function getProducts(req,res) {
         if (req.user!==null) {
 
             const _id = req.user.userId;
-            console.log(_id);
             const user = await userSchema.findOne({_id});
             return res.status(200).send({products,profile:user.profile,id:_id})
         }else{
-
-            console.log("hai");
             return res.status(403).send({products,msg:"Login for better user experience"})
         }
         
         
+    } catch (error) {
+        res.status(404).send({msg:"error"})
+    }
+}
+export async function getProductss(req,res) {
+    try {
+        const products=await productSchema.find();
+        res.status(200).send(products)
     } catch (error) {
         res.status(404).send({msg:"error"})
     }
@@ -95,13 +100,13 @@ export async function editUser(req,res) {
 
 export async function addProduct(req,res) {
     try {
-        const {pname,price,category,description,sellerId,images,place,address,phone,pincode,sellerName} = req.body;
-        if(!(pname&&price&&category&&description&&sellerId&&images&&place&&address&&phone&&pincode&&sellerName))
+        const {pname,price,category,description,sellerId,images} = req.body;
+        if(!(pname&&price&&category&&description&&sellerId&&images))
             return res.status(404).send({msg:"fields are empty"})
         console.log("hai");
         
         productSchema
-            .create({pname,price,category,description,sellerId,images,place,address,phone,pincode,sellerName})
+            .create({pname,price,category,description,sellerId,images})
             .then(()=>{
                 console.log("success");
                 return res.status(201).send({msg:"successs"})
@@ -129,9 +134,19 @@ export async function getProduct(req,res) {
     try {
         const {_id}=req.params;
         const product=await productSchema.findOne({_id});
-        console.log(product.category);
         res.status(200).send(product);
     } catch (error) {
         res.status(404).send(error)
+    }
+}
+
+export async function editProduct(req,res) {
+    try {
+        const {_id}=req.params;
+    const {...product}=req.body;
+    const data=await productSchema.updateOne({_id},{$set:{...product}});
+    res.status(201).send(data);
+    } catch (error) {
+        res.status(404).send(error);
     }
 }

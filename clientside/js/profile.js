@@ -24,11 +24,11 @@ async function getSProducts() {
     products.map((product)=>{
         str+=`
             <div class="product">
-                <a href="./pages/product.html">
+                <a href="./products.html?id=${product._id}">
                     <img src="${product.images[0]}" alt="">
-                    <h3>${product.pname}</h3>
+                    <h3>${product.pname.substring(0,18)}</h3>
                     <h1 >Rs. ${product.price}</h1>
-                    <p>${product.description}</p>
+                    <p>${product.category.toUpperCase()}</p>
                 </a>
             </div>
         `

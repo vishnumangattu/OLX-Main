@@ -1,17 +1,33 @@
 const url=window.location.href;
 const urlParams=new URLSearchParams(url.split("?")[1]);
 const id=urlParams.get("id");
-let images
-document.getElementById("addp").addEventListener("submit",async(e)=>{
+let images=[];
+let sellerId;
+async function getProduct() {
+    const res=await fetch(`http://localhost:3000/api/getproduct/${id}`);
+    const product=await res.json();
+    images=product.images;
+    document.getElementById("pname").value=product.pname;
+    document.getElementById("category").value=product.category;
+    document.getElementById("price").value=product.price;
+    document.getElementById("description").innerText=product.description;
+    sellerId=product.sellerId;
+    product.images.map((image)=>{
+        const data=document.createElement("img");
+        data.src=image;
+        document.getElementById("pro").appendChild(data);
+    })
+}
+getProduct();
+
+document.getElementById("editp").addEventListener("submit",async(e)=>{
     e.preventDefault();
     const pname=document.getElementById("pname").value;
     const price=parseInt(document.getElementById("price").value);
     const category=document.getElementById("category").value;
     const description=document.getElementById("description").value;
-    const sellerId=id;
-    
-    fetch("http://localhost:3000/api/addproduct",{
-        method:"POST",
+    fetch(`http://localhost:3000/api/editproduct/${id}`,{
+        method:"PUT",
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify({pname,price,category,description,sellerId,images})
     }).then((res)=>{
@@ -43,9 +59,6 @@ document.getElementById("images").addEventListener('change',(e)=>{
         data.src=await convertTBase64(i);
         document.getElementById("pro").appendChild(data);
     })
-    console.log(images);
-    
-    // document.getElementById("pro").innerHTML=`<img src="${images}" alt="" >`
 })
 function convertTBase64(file){
     return new Promise((resolve,reject)=>{

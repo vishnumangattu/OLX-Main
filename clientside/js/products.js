@@ -7,8 +7,6 @@ async function getProduct() {
     const product=await res.json();
     const res2=await fetch(`http://localhost:3000/api/getuser/${product.sellerId}`);
     const user=await res2.json();
-    console.log(user.username);
-    
     images=product.images;
     document.getElementById("pname").innerText=product.pname;
     document.getElementById("category").innerText=product.category.toUpperCase();
@@ -22,13 +20,13 @@ async function getProduct() {
         document.getElementById("prodimg").appendChild(data);
         i++;
     })
+    document.getElementById("edit").innerHTML=`<a href=./editp.html?id=${id}>Edit Product</a>`
     document.getElementById("description").innerText=product.description;
-    document.getElementById("sellerName").innerText=user.username.toUpperCase();
+    document.getElementById("sellerName").innerText=user.sellerName.toUpperCase();
     document.getElementById("phone").textContent=user.phone;
     document.getElementById("place").textContent=user.place;
     document.getElementById("address").textContent=user.address;
     document.getElementById("pincode").textContent=user.pincode;
-
 }
 getProduct();
 function change(a) {
