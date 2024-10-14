@@ -16,6 +16,7 @@ async function getProducts() {
                 <h1 >₹${product.price}</h1>
                 <p>${product.category.toUpperCase()}</p>
             </a>
+            <img src="./images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="image" onclick="wish('${product._id}')" id="${product._id}">
         </div>
         `
     })
@@ -64,6 +65,10 @@ function popup() {
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
 }
 
+function wish(e){
+    document.getElementById(`${e}`).src=document.getElementById(`${e}`).src==="./images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"?"../images/favorite_24dp_EA3323_FILL1_wght400_GRAD0_opsz24.png":"../images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png";
+    
+}
 // Close dropdown if clicked outside
 window.addEventListener('click', (event) => {
     if (!profileImage.contains(event.target) && !dropdownMenu.contains(event.target)) {

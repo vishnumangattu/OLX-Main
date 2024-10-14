@@ -15,7 +15,7 @@ body {
     width: 40%;
     padding: 12px;
     align-items: center;
-    background-color:#1a4862 ; /* Dark green container */
+    background-color:#d6efd8 ; /* Dark green container */
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     overflow: auto;
@@ -28,15 +28,9 @@ body {
     padding: 10px 0;
 }
 
-.header h1 {
-    color: #eadcce; /* Soft light green for the title */
-    font-size: 2em; /* Adjusted font size */
-    margin: 5px 0;
-}
-
 .header h4, .header h2 {
-    color: #7bff8d; /* Light text color */
-    margin: 2px 0;
+    color: #01420a; /* Light text color */
+    margin:  0;
 }
 .header h4{
     text-align: left;
@@ -62,8 +56,7 @@ body {
     height: 350px; 
     margin: 10px 0;
     border-radius: 10px;
-    border: 2px solid #c1d5c0; /* Light green border */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 2px solid #044600; /* Light green border */
     transition:  0.5s;
 }
 .main-image img{
@@ -75,7 +68,6 @@ body {
 .prodimg {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     width: 15%;
     height: 350px;
     overflow-y: scroll;
@@ -88,7 +80,7 @@ body {
     width: 70px; 
     margin:  5px 8px;
     border-radius: 5px;
-    border: 1px solid #f1bfbf;
+    border: 1px solid #450202;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     object-fit: cover;
@@ -108,9 +100,12 @@ body {
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
-    margin-top: 15px; /* Space above the button */
     transition: background-color 0.3s, transform 0.3s;
     width: 100%;
+    margin-bottom: 1%;
+}
+.content h1{
+    margin: 5px 0;
 }
 
 .button-group {
