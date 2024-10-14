@@ -1,27 +1,14 @@
 const value = localStorage.getItem("Auth");
 let profileImage;
 let dropdownMenu;
+let buyerId;
 async function getProducts() {
-
     const res=await fetch("http://localhost:3000/api/getproducts",{headers:{
     "Authorization" : `Bearer ${value}`}})
     const result=await res.json();
     str=``;
-    result.products.map((product)=>{
-        str+=`
-        <div class="product">
-            <a href="./pages/product.html?id=${product._id}">
-                <img src="${product.images[0]}" alt="">
-                <h3>${product.pname.substring(0,16)}</h3>
-                <h1 >₹${product.price}</h1>
-                <p>${product.category.toUpperCase()}</p>
-            </a>
-            <img src="./images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="image" onclick="wish('${product._id}')" id="${product._id}">
-        </div>
-        `
-    })
-    document.getElementById("products").innerHTML=str;
     if(res.status==200){
+        buyerId=result.id;
         document.getElementById("navbar").innerHTML=`
         <img src="./images/OLX-Symbol.png" alt="olx">
         <div class="search">
@@ -40,9 +27,37 @@ async function getProducts() {
         `
         profileImage= document.getElementById('profileImage');
         dropdownMenu = document.getElementById('dropdownMenu');
+        result.products.map((product)=>{
+            str+=`
+            <div class="product">
+                <a href="./pages/product.html?id=${product._id}">
+                    <img src="${product.images[0]}" alt="">
+                    <h3>${product.pname.substring(0,16)}</h3>
+                    <h1 >₹${product.price}</h1>
+                    <p>${product.category.toUpperCase()}</p>
+                </a>
+                <img src="./images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png" alt="" class="image" onclick="wish('${product._id}')" id="${product._id}">
+            </div>
+            `
+        })
+        document.getElementById("products").innerHTML=str;
         
     }
     else if(res.status==403){
+        result.products.map((product)=>{
+            str+=`
+            <div class="product">
+                <a href="./pages/product.html?id=${product._id}">
+                    <img src="${product.images[0]}" alt="">
+                    <h3>${product.pname.substring(0,16)}</h3>
+                    <h1 >₹${product.price}</h1>
+                    <p>${product.category.toUpperCase()}</p>
+                </a>
+                
+            </div>
+            `
+        })
+        document.getElementById("products").innerHTML=str;
         profileImage= document.getElementById('profileImage');
         dropdownMenu = document.getElementById('dropdownMenu');
     }
@@ -54,8 +69,6 @@ async function getProducts() {
 getProducts();
 
 function logout() {
-    console.log("hai");
-    
     localStorage.removeItem("Auth");
     window.location.href="./index.html"
 }
@@ -65,9 +78,34 @@ function popup() {
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
 }
 
-function wish(e){
-    document.getElementById(`${e}`).src=document.getElementById(`${e}`).src==="./images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"?"../images/favorite_24dp_EA3323_FILL1_wght400_GRAD0_opsz24.png":"../images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png";
-    
+async function wish(e){
+    a=document.getElementById(`${e}`).src==="http://localhost:3000/images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"?"./images/favorite_24dp_EA3323_FILL1_wght400_GRAD0_opsz24.png":"./images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"; 
+    document.getElementById(`${e}`).src=a;
+    if (a==="http://localhost:3000/images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png") {
+        const res=await fetch(`http://localhost:3000/api/getproduct/${e}`);
+        const product=await res.json();
+        fetch("http://localhost:3000/api/addwish",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify({buyerId,product})
+        }).then((res)=>{
+            console.log(res);
+            if(res.status==201){
+                alert("success")
+                console.log(res);  
+            }
+            else if (res.status==404){
+                alert("error")
+            }
+            else{
+                alert("error")
+            }
+            
+        }).catch((error)=>{
+            console.log(error);
+            
+        });
+    }
 }
 // Close dropdown if clicked outside
 window.addEventListener('click', (event) => {

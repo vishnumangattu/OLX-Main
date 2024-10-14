@@ -13,6 +13,7 @@ router.route("/edituser/:_id").put(prod.editUser)
 router.route("/addproduct").post(prod.addProduct);
 router.route("/getsproducts/:id").get(prod.getSProducts);
 router.route("/getproduct/:_id").get(prod.getProduct);
-router.route("/editproduct/:_id").put(prod.editProduct)
+router.route("/editproduct/:_id").put(prod.editProduct);
+router.route("/addwish").post(prod.addWish);
 
 export default router;

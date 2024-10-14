@@ -1,5 +1,6 @@
 import userSchema from './models/user.model.js';
 import productSchema from "./models/product.model.js";
+import listSchema from "./models/wishlist.model.js"
 import bcrypt from 'bcrypt';
 import pkg from "jsonwebtoken";
 
@@ -66,7 +67,6 @@ export async function signUp(req,res) {
     }
      catch(error){
         return res.status(404).send({msg:error})
-
     }  
 }
 
@@ -146,6 +146,25 @@ export async function editProduct(req,res) {
     const {...product}=req.body;
     const data=await productSchema.updateOne({_id},{$set:{...product}});
     res.status(201).send(data);
+    } catch (error) {
+        res.status(404).send(error);
+    }
+}
+
+export async function addWish(req,res) {
+    try {
+        const {...wishlist} = req.body;
+        
+        listSchema
+            .create({...wishlist})
+            .then(()=>{
+                console.log("success");
+                return res.status(201).send({msg:"successs"})
+            })
+            .catch((error)=>{
+                console.log("faliure");
+                return res.status(404).send({msg:"list not added"})
+            })
     } catch (error) {
         res.status(404).send(error);
     }

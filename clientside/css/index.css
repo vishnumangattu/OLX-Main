@@ -112,10 +112,12 @@
     color: white;
 }
 #products{
-    width: 100%;
+    margin: auto;
+    width: 80%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
 }
 .product{
     position: relative;
@@ -123,6 +125,10 @@
     padding: 1%;
     margin: 1% 2%;
     line-height: 4vh;
+    transition: 0.4s;
+}
+.product:hover{
+    transform: scale(1.05);
 }
 .product .image{
     position: absolute;

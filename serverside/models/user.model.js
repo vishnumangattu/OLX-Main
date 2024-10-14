@@ -9,4 +9,4 @@ const userSchema = new mongoose.Schema({
     phone:{type:Number},
     pincode:{type:Number}
 })
-export default mongoose.model.Users||mongoose.model("User",userSchema)
+export default mongoose.model.Users||mongoose.model("User",userSchema);
