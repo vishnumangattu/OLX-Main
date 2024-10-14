@@ -6,7 +6,6 @@ async function getProducts() {
     const res=await fetch("http://localhost:3000/api/getproducts",{headers:{
     "Authorization" : `Bearer ${value}`}})
     const result=await res.json();
-    console.log(result);
     str=``;
     result.products.map((product)=>{
         str+=`
@@ -25,7 +24,7 @@ async function getProducts() {
         document.getElementById("navbar").innerHTML=`
         <img src="./images/OLX-Symbol.png" alt="olx">
         <div class="search">
-            <input type="text" name="" id="filter" placeholder="Find cars,mobile Phones and more...">
+            <input type="text" name="" id="filter" onkeyup="search(this)" placeholder="Find cars,mobile Phones and more...">
             <img src="./images/search_2.png" alt="">
         </div>
         <div  class="container">
@@ -39,16 +38,12 @@ async function getProducts() {
         <button ><a href="./pages/addp.html?id=${result.id}"">+ SELL</a></button>
         `
         profileImage= document.getElementById('profileImage');
-        console.log(profileImage);
         dropdownMenu = document.getElementById('dropdownMenu');
         
     }
     else if(res.status==403){
         profileImage= document.getElementById('profileImage');
-        console.log(profileImage);
-        
         dropdownMenu = document.getElementById('dropdownMenu');
-        console.log(result.msg);
     }
     else{
         console.log(result.msg);
@@ -99,3 +94,26 @@ document.getElementById("filter").addEventListener('keyup',async(e)=>{
         console.log(error);
     }
 })
+async function search(e) {
+    try {
+        const res=await fetch(`http://localhost:3000/api/getproductss`);
+        const products=await res.json();
+        str=``;
+        products.filter((i)=>i.pname.toLowerCase().includes(e.value.toLowerCase())).map((product)=>{
+            str+=`
+            <div class="product">
+                <a href="./pages/product.html?id=${product._id}">
+                    <img src="${product.images[0]}" alt="">
+                    <h3>${product.pname.substring(0,16)}</h3>
+                    <h1 >₹${product.price}</h1>
+                    <p>${product.category.toUpperCase()}</p>
+                </a>
+            </div>
+        `
+        })
+
+        document.getElementById("products").innerHTML=str;
+    } catch (error) {
+        console.log(error);
+    }
+}
