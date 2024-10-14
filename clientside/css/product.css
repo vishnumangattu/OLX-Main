@@ -2,81 +2,93 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    color: #eaeaea; /* Light text color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
+    margin: 2% 0;
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 40%;
     padding: 12px;
-    background: #ebe6e0; /* Dark green container */
+    align-items: center;
+    background-color:#1a4862 ; /* Dark green container */
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     overflow: auto;
 }
 
 .header {
+    width: 100%;
     text-align: center;
     margin-bottom: 10px;
     padding: 10px 0;
 }
 
 .header h1 {
-    color: #472708; /* Soft light green for the title */
+    color: #eadcce; /* Soft light green for the title */
     font-size: 2em; /* Adjusted font size */
     margin: 5px 0;
 }
 
-.header h3, .header h2 {
-    color: #174030; /* Light text color */
+.header h4, .header h2 {
+    color: #7bff8d; /* Light text color */
     margin: 2px 0;
 }
-.header h3{
+.header h4{
     text-align: left;
 }
 .content {
+    width: 100%;
     display: flex;
     flex: 1;
+    flex-direction: column;
     justify-content: space-between;
     height: auto; /* Allow the content to grow based on its content */
 }
 
 .product-images {
-    flex: 0 0 50%; /* Set to 60% width */
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-right: 20px; /* Maintain spacing from details section */
+
 }
 
-.product-images .main-image {
-    width: 100%;
-    height: auto;
-    max-height: 400px; /* Increased max height */
+ .main-image {
+    width: 80%;
+    height: 350px; 
     margin: 10px 0;
     border-radius: 10px;
-    border: 2px solid #3a4b39; /* Light green border */
+    border: 2px solid #c1d5c0; /* Light green border */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transition:  0.5s;
-
 }
 .main-image img{
     object-fit: cover;
-    object-position: center;
+    height: 100%;   
+    width: 100%;   
+    border-radius: 10px;
 }
 .prodimg {
     display: flex;
-    justify-content: start;
-    width: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 15%;
+    height: 350px;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .prodimg img {
+    display: block;
     height: 70px;
     width: 70px; 
-    margin: 0 5px;
+    margin:  5px 8px;
     border-radius: 5px;
-    border: 1px solid #4a4a4a;
+    border: 1px solid #f1bfbf;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
     object-fit: cover;
@@ -87,7 +99,6 @@ body {
     transform: scale(1.1);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
-
 
 .buy-now {
     background-color: #1a4862; /* Light green background */
@@ -102,12 +113,9 @@ body {
     width: 100%;
 }
 
-.buy-now:hover {
-    transform: scale(1.05); /* Slight scale effect */
-}
-
 .button-group {
-    width: 80%;
+    margin-bottom: 2%;
+    width: 100%;
     display: flex;
     justify-content: space-between; /* Space buttons evenly */
     margin-top: 15px; /* Space above the button group */
@@ -115,34 +123,25 @@ body {
 
 .edit-product, .delete-product {
     width: 45%;
-    background-color: #739fc9; /* Light green background */
-    color: #1c1c1c; /* Dark text color */
+    background-color: #0d6efd; /* Light green background */
+    color: white; /* Dark text color */
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
     font-size: 1em;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
 }
-.edit-product a{
-    color: #1c1c1c;
+ a{
+    color: white;
     text-decoration: none;
-}
-.edit-product:hover {
-    background-color: #2b31a2; 
-    transform: scale(1.05); 
 }
 
 .delete-product {
-    background-color: #e57373; /* Light red background for delete */
-}
-
-.delete-product:hover {
-    background-color: #c62828; /* Darker red on hover */
-}        
+    background-color: #dc3545; /* Light red background for delete */
+}       
 
 .details {
-    flex: 0 0 46%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Ensure items are aligned at the top */
@@ -153,7 +152,7 @@ body {
     to { opacity: 1; }
 }
 .seller-info, .location-info, .specifications,.description {
-    background-color: #1a4862; /* Slightly lighter dark green */
+    background-color: #ebe6e0; /* Slightly lighter dark green */
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     padding: 15px;
@@ -162,12 +161,12 @@ body {
 
 .details h3{
     margin: 0 0 10px;
-    color: #d7dfa3; /* Soft light green for headings */
+    color: #020b6e; /* Soft light green for headings */
 }
 
-.seller-info p, .location-info p, .specifications p {
+.details p {
     margin: 5px 0;
-    color: #eaeaea; /* Light text color */
+    color: #0c0000; /* Light text color */
 }
 
 .specifications label {

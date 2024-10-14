@@ -12,7 +12,7 @@ async function getUser() {
     document.getElementById("address").textContent=user.address;
     document.getElementById("pincode").textContent=user.pincode;
     document.getElementById("phone").textContent=user.phone;
-    document.getElementById("edit").innerHTML=`<button ><a href="../pages/edit.html?id=${user._id}">Edit Profile</a></button>`
+    document.getElementById("edit").innerHTML=`<a href="../pages/edit.html?id=${user._id}"><img src="../images/edit.png" alt=""></a>`
 }
 getUser();
 

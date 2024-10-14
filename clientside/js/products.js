@@ -6,7 +6,8 @@ async function getProduct() {
     const res=await fetch(`http://localhost:3000/api/getproduct/${id}`);
     const product=await res.json();
     const res2=await fetch(`http://localhost:3000/api/getuser/${product.sellerId}`);
-    const user=await res2.json();
+    
+    const seller=await res2.json();
     images=product.images;
     document.getElementById("pname").innerText=product.pname;
     document.getElementById("category").innerText=product.category.toUpperCase();
@@ -22,11 +23,11 @@ async function getProduct() {
     })
     document.getElementById("edit").innerHTML=`<a href=./editp.html?id=${id}>Edit Product</a>`
     document.getElementById("description").innerText=product.description;
-    document.getElementById("sellerName").innerText=user.sellerName.toUpperCase();
-    document.getElementById("phone").textContent=user.phone;
-    document.getElementById("place").textContent=user.place;
-    document.getElementById("address").textContent=user.address;
-    document.getElementById("pincode").textContent=user.pincode;
+    document.getElementById("sellerName").innerText=seller.username.toUpperCase();
+    document.getElementById("phone").textContent=seller.phone;
+    document.getElementById("place").textContent=seller.place;
+    document.getElementById("address").textContent=seller.address;
+    document.getElementById("pincode").textContent=seller.pincode;
 }
 getProduct();
 function change(a) {

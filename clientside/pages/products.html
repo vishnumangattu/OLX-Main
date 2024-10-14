@@ -9,49 +9,39 @@
 <body>
     <div class="container">
         <div class="header">
-            <h3>Category: <span id="category"></span></h3>
-            <h1 id="pname"></h1>
+            <h4>Category: <span id="category"></span></h4>
             <h2>Price: <span id="price"></span></h2>
+            <h1 id="pname"></h1>
         </div>
         <div class="content">
             <div class="product-images">
-                <img src="" id="image" alt="Main Product Image" class="main-image">
+                <div class="main-image">
+                    <img src="" id="image" alt="Main Product Image">
+                </div>
                 <div class="prodimg" id="prodimg">
                 </div>
-                
-                
-                    <div class="button-group" id="check"> 
-                        <!-- <button class="buy-now" >Buy Now</button>  -->
-                        <button class="edit-product" id="edit"></button>
-                        <button class="delete-product">Delete Product</button>
-                    </div>
             </div>
             
             <div class="details">
+                <div class="button-group" id="check"> 
+                    <!-- <button class="buy-now" >Buy Now</button>  -->
+                    <button class="edit-product" id="edit"></button>
+                    <button class="delete-product">Delete Product</button>
+                </div>
                 <div class="description">
                     <h3 >Description</h3>
                     <p><label>What seller says:</label> <span id="description"></span></p>
                 </div>
                 <div class="seller-info">
                     <h3>Seller Information</h3>
-                    <div class="detail-item">
-                        <div>
-                            <h4>Name: <span id="sellerName"></span></h4>
-                            <p><label>Phone:</label> <span id="phone"></span></p>
-                        </div>
-                    </div>
+                    <p>Name: <b><span id="sellerName"></span></b></p>
+                    <p><label>Phone:</label> <span id="phone"></span></p>
                 </div>
                 <div class="location-info">
                     <h3>Location</h3>
                     <p><label>Place:</label> <span id="place"></span></p>
                     <p><label>Address:</label> <span id="address"></span></p>
                     <p><label>Pincode:</label> <span id="pincode"></span>10001</p>
-                </div>
-                <div class="specifications">
-                    <h3>Product Specifications</h3>
-                    <p><label>Delivery Options:</label> Standard, Express</p>
-                    <p><label>Payment Options:</label> Cash, Credit/Debit Card</p>
-                    <p><label>Return Policy:</label> No return.</p>
                 </div>
             </div>
         </div>
