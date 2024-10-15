@@ -12,7 +12,7 @@ async function getProduct() {
     images=product.images;
     document.getElementById("pname").innerText=product.pname;
     document.getElementById("category").innerText=product.category.toUpperCase();
-    document.getElementById("price").textContent=`₹${product.price}`;
+    document.getElementById("price").textContent=`₹${product.price}/-`;
     document.getElementById("image").src=product.images[0];
     let i=0;
     product.images.map((image)=>{
