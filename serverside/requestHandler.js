@@ -10,10 +10,11 @@ export async function getProducts(req,res) {
     try {
         const products=await productSchema.find();
         if (req.user!==null) {
-
             const _id = req.user.userId;
             const user = await userSchema.findOne({_id});
-            return res.status(200).send({products,profile:user.profile,id:_id})
+            console.log(_id);
+            const products1=await productSchema.find({sellerId:{$ne:_id}});
+            return res.status(200).send({products1,profile:user.profile,id:_id})
         }else{
             return res.status(403).send({products,msg:"Login for better user experience"})
         }

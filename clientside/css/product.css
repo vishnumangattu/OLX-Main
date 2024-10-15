@@ -15,7 +15,7 @@ body {
     width: 40%;
     padding: 12px;
     align-items: center;
-    background-color:#d6efd8 ; /* Dark green container */
+    background-color:#e0f2e1 ; /* Dark green container */
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     overflow: auto;
@@ -93,7 +93,7 @@ body {
 }
 
 .buy-now {
-    background-color: #1a4862; /* Light green background */
+    background-color: #1a2a62; /* Light green background */
     color: #f4f0f0; /* Dark text color */
     border: none;
     border-radius: 5px;
@@ -106,6 +106,7 @@ body {
 }
 .content h1{
     margin: 5px 0;
+    text-align: center;
 }
 
 .button-group {
@@ -118,7 +119,7 @@ body {
 
 .edit-product, .delete-product {
     width: 45%;
-    background-color: #0d6efd; /* Light green background */
+    background-color: #1a2a62; /* Light green background */
     color: white; /* Dark text color */
     border: none;
     border-radius: 5px;
@@ -132,7 +133,7 @@ body {
 }
 
 .delete-product {
-    background-color: #dc3545; /* Light red background for delete */
+    background-color: #b70517; /* Light red background for delete */
 }       
 
 .details {

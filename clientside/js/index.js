@@ -27,7 +27,7 @@ async function getProducts() {
         `
         profileImage= document.getElementById('profileImage');
         dropdownMenu = document.getElementById('dropdownMenu');
-        result.products.map((product)=>{
+        result.products1.map((product)=>{
             str+=`
             <div class="product">
                 <a href="./pages/product.html?id=${product._id}">

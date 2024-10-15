@@ -126,6 +126,7 @@
     margin: 1% 2%;
     line-height: 4vh;
     transition: 0.4s;
+    overflow-x: hidden;
 }
 .product:hover{
     transform: scale(1.05);
