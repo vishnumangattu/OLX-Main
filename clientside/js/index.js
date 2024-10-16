@@ -81,7 +81,7 @@ function popup() {
 async function wish(e){
     a=document.getElementById(`${e}`).src==="http://localhost:3000/images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"?"./images/favorite_24dp_EA3323_FILL1_wght400_GRAD0_opsz24.png":"./images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png"; 
     document.getElementById(`${e}`).src=a;
-    if (a==="http://localhost:3000/images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png") {
+    if (a!=="http://localhost:3000/images/favorite_24dp_000000_FILL0_wght400_GRAD0_opsz24.png") {
         const res=await fetch(`http://localhost:3000/api/getproduct/${e}`);
         const product=await res.json();
         fetch("http://localhost:3000/api/addwish",{
@@ -89,10 +89,8 @@ async function wish(e){
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({buyerId,product})
         }).then((res)=>{
-            console.log(res);
             if(res.status==201){
                 alert("success")
-                console.log(res);  
             }
             else if (res.status==404){
                 alert("error")
